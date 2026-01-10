@@ -7,6 +7,7 @@
 
   outputs =
     {
+      self,
       nixpkgs,
       disko,
       nixos-facter-modules,
@@ -43,6 +44,7 @@
       # nixos-anywhere --flake .#generic --generate-hardware-config nixos-generate-config ./hardware-configuration.nix <hostname>
       nixosConfigurations.generic = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit self; };
         modules = [
           disko.nixosModules.disko
           ./configuration.nix
