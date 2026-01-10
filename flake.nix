@@ -3,7 +3,7 @@
   inputs.disko.url = "github:nix-community/disko";
   inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
   inputs.nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
-  inputs.minimal-example.url = "github:nomadium/autoinstall?ref=minimal-nixos-anywhere&dir=nixos/hosts/nixos-anywhere-minimal";
+  inputs.minimal-example.url = "github:nomadium/autoinstall?ref=minimal-nixos-anywhere&dir=nixos/hosts/minimal";
 
   outputs =
     {
