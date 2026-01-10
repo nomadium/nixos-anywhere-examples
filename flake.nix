@@ -3,12 +3,22 @@
   inputs.disko.url = "github:nix-community/disko";
   inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
   inputs.nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
+  inputs.minimal-example = {
+    url = "github:nomadium/autoinstall?dir=nixos/hosts/minimal";
+  };
+  inputs.home-manager = {
+    url = "github:nix-community/home-manager/release-25.11";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
 
   outputs =
     {
+      self,
       nixpkgs,
       disko,
       nixos-facter-modules,
+      minimal-example,
+      home-manager,
       ...
     }:
     {
@@ -41,9 +51,12 @@
       # nixos-anywhere --flake .#generic --generate-hardware-config nixos-generate-config ./hardware-configuration.nix <hostname>
       nixosConfigurations.generic = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit self home-manager; };
         modules = [
           disko.nixosModules.disko
           ./configuration.nix
+          "${minimal-example}/reusable-configuration.nix"
+          "${minimal-example}/home-manager.nix"
           ./hardware-configuration.nix
         ];
       };
