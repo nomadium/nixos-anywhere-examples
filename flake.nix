@@ -47,7 +47,6 @@
           disko.nixosModules.disko
           ./configuration.nix
           "${minimal-example}/reusable-configuration.nix"
-          "${minimal-example}/home-manager.nix"
           ./hardware-configuration.nix
         ];
       };
