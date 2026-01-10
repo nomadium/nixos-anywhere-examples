@@ -46,7 +46,7 @@
         modules = [
           disko.nixosModules.disko
           ./configuration.nix
-          "${minimal-example}/configuration.nix"
+          "${minimal-example}/reusable-configuration.nix"
           ./hardware-configuration.nix
         ];
       };

@@ -17,4 +17,6 @@
     efiSupport = true;
     efiInstallAsRemovable = true;
   };
+
+  system.stateVersion = "25.11";
 }
