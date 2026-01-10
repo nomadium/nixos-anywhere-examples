@@ -10,6 +10,7 @@
       nixpkgs,
       disko,
       nixos-facter-modules,
+      minimal-example,
       ...
     }:
     {
@@ -45,7 +46,7 @@
         modules = [
           disko.nixosModules.disko
           ./configuration.nix
-          inputs.minimal-example + "/configuration.nix"
+          "${minimal-example}/configuration.nix"
           ./hardware-configuration.nix
         ];
       };
